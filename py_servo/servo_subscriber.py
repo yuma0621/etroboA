@@ -7,7 +7,8 @@ from std_msgs.msg import Int16
 SERVO_PIN = 22 
 pi = pigpio.pi()
 
-class ServoSubscriber (Node):
+class ServoSubscriber(Node):
+	
 	def __init__(self):
 		super(). __init__('servo_subscriber')
 		self.subscription = self.create_subscription(
@@ -15,7 +16,7 @@ class ServoSubscriber (Node):
 			'servo_topic', 
 			self.listener_callback,
 			10)
-		self. Subscription
+		self.subscription
 
 	def listener_callback(self, msg):
 		self.get_logger().info('Subscribed, "%d"' % msg.data) 
@@ -25,8 +26,11 @@ class ServoSubscriber (Node):
 def main(args=None): 
 	try:
 		rclpy.init(args=args)
+		
 		servo_subscriber = ServoSubscriber()
+		
 		rclpy.spin(servo_subscriber)
+		
 	except KeyboardInterrupt:
 		pass 
 	finally:
