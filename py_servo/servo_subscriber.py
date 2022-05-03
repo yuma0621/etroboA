@@ -33,6 +33,6 @@ def main(args=None):
 		servo_subscriber.destroy_node() 
 	rclpy.shutdown()
 	
-If __name__ == '__main__': 
+if __name__ == '__main__': 
     main()
 
