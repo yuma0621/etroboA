@@ -6,7 +6,7 @@ class ServoPublisher(Node):
 	def __init__(self):
 		super(). __init__('servo_publisher') 
 		selt.publisher_ = self.create_publisher(Int16, 'servo_topic',10) 
-		timer-period = 3 
+		timer_period = 3 
 		selt.timer = self.create_timer(timer_period, self.timer_callback) 
 		self.i = 500
 	def timer_callback(self):
