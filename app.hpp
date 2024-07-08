@@ -1,7 +1,9 @@
+
 #ifdef __cplusplus
 extern "C" {
 #endif
 
+#include "Motor.hpp"
 #include "ev3api.h"
 
 #define MAIN_PRIORITY    (TMIN_APP_TPRI + 1)
@@ -12,11 +14,6 @@ extern "C" {
 #define LINE_TRACER_PERIOD  (100 * 1000 / 0.6 ) /* ライントレースタスク:100msec周期 */
 #define CALIBRATION_PERIOD  (100 * 1000 / 0.6) /* キャリブレーションタスク:100msec周期 */
 
-/* RGB値 */
-extern rgb_raw_t rgb_max;
-extern rgb_raw_t rgb_min;
-extern rgb_raw_t rgb_ave;
-
 /* センサーポートの定義 */
 static const sensor_port_t
     touch_sensor    = EV3_PORT_1,
@@ -24,17 +21,13 @@ static const sensor_port_t
     sonar_sensor    = EV3_PORT_3,
     gyro_sensor     = EV3_PORT_4;
 
-/* モーターポートの定義 */
-static const motor_port_t
-    arm_motor       = EV3_PORT_A,
-    left_motor      = EV3_PORT_C,
-    right_motor     = EV3_PORT_B;
-
 #ifndef STACK_SIZE
 #define STACK_SIZE      (4096)
 #endif /* STACK_SIZE */
 
 #ifndef TOPPERS_MACRO_ONLY
+
+Motor motor;
 
 extern void main_task(intptr_t exinf);
 
