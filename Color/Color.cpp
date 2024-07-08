@@ -2,8 +2,13 @@
 #include "Color.h"
 #include <stdio.h>
 
-Color::Color()
-{
+Color::Color(){
+ rgb_max.r = 0;
+    rgb_min.r = 200;
+    rgb_max.g = 0;
+    rgb_min.g = 200;
+    rgb_max.b = 0;
+    rgb_min.b = 200;
 }
 
 /* キャリブレーションタスク(100msec周期) */
