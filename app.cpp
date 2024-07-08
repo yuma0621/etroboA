@@ -14,7 +14,7 @@ void main_task(intptr_t unused) { // <1>
  wait_start();                   /* 動作開始待ち(シミュレータ:自動で開始, 実機:BlueToothボタンで開始) */
  calibration();    /* キャリブレーション */
     p_tracer();     /*P制御ライントレース*/
-         　　/* タブルループNEO */
+
                                    　　/* デブリリムーバル */
                                    　　/* スマートキャリー */
                                    　　/* 停車処理 */
@@ -24,12 +24,6 @@ void main_task(intptr_t unused) { // <1>
 
 void main_init(){
 /* グローバル変数の初期化 */
-    rgb_max.r = 0;
-    rgb_min.r = 200;
-    rgb_max.g = 0;
-    rgb_min.g = 200;
-    rgb_max.b = 0;
-    rgb_min.b = 200;
 
   /* センサー入力ポートの設定 */
     ev3_sensor_config(touch_sensor ,TOUCH_SENSOR);
@@ -60,32 +54,25 @@ void calibration(){
     /* キャリブレーションタスク起動 */
     sta_cyc(CALIBRATION_TASK_CYC);
     /* 右旋回 */
-    ev3_motor_set_power(left_motor,  10);
-    ev3_motor_set_power(right_motor, -10);
+    motor.motor_control(10, -10);
     wait_msec(1500);
     /* 一時停止 */
-    ev3_motor_set_power(left_motor,  0);
-    ev3_motor_set_power(right_motor, 0);
+    motor.motor_control(0, 0);
     wait_msec(1000);
     /* 前進 */
-    ev3_motor_set_power(left_motor,  5);
-    ev3_motor_set_power(right_motor, 5);
+    motor.motor_control(5, 5);
     wait_msec(1000);
     /* 後退 */
-    ev3_motor_set_power(left_motor,  -5);
-    ev3_motor_set_power(right_motor, -5);
+    motor.motor_control(-5, -5);
     wait_msec(4000);
     /* 前進 */
-    ev3_motor_set_power(left_motor,  5);
-    ev3_motor_set_power(right_motor, 5);
+    motor.motor_control(5, 5);
     wait_msec(2500);
     /* 左旋回 */
-    ev3_motor_set_power(left_motor, -10);
-    ev3_motor_set_power(right_motor, 10);
+    motor.motor_control(-10, 10);
     wait_msec(1500);
     /* 一時停止 */
-    ev3_motor_set_power(left_motor,  0);
-    ev3_motor_set_power(right_motor, 0);
+    motor.motor_control(0, 0);
     /* キャリブレーションタスク停止 */
     stp_cyc(CALIBRATION_TASK_CYC);
     /* キャリブレーション終了 */
@@ -94,11 +81,9 @@ void calibration(){
     wait_msec(1000);
 
     /* (デモ用)逆走にする */
-    ev3_motor_set_power(left_motor, -10);
-    ev3_motor_set_power(right_motor, 10);
+    motor.motor_control(-10, 10);
     wait_msec(3200);
-    ev3_motor_set_power(left_motor,  0);
-    ev3_motor_set_power(right_motor, 0);
+    motor.motor_control(0, 0);
     wait_msec(1000);
 }
 
