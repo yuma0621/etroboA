@@ -1,0 +1,51 @@
+#include "Tracer.hpp"
+#include "ev3.h"
+
+using namespace ev3api;
+
+Tracer::Tracer()
+{
+}
+
+void Tracer::tracer_task(intptr_t exinf) { // <1>
+
+ int16_t rotation = P_steering_amount_calc();/* ステアリング操舵量補正値の計算 *
+ //set_parameters(40,0.83, 0);//mode, base_speed, Kp, bias
+ motor_control(rotation);
+ ext_tsk();
+}
+
+void Tracer::init() {
+  init_f("Tracer");
+}
+
+void Tracer::terminate() {
+  msg_f("Stopped.", 1);
+ ev3_motor_set_power(left_motor, 0);
+    ev3_motor_set_power(right_motor, 0);
+}
+
+void Tracer::motor_control(int16_t rotation) {
+
+ int left_motor_power, right_motor_power; /*左右モータ設定パワー*/    
+
+    left_motor_power  = (int)(BASE_SPEED + (rotaion * LEFT_EDGE));
+    right_motor_power = (int)(BASE_SPEED - (rotation * LEFT_EDGE));
+
+ ev3_motor_set_power(left_motor, left_motor_power);
+    ev3_motor_set_power(right_motor, right_motor_power);
+
+ return;
+}
+
+int16_t Tracer::P_steering_amount_calc() {
+ /* 目標輝度値の計算 calib_taskで行う*/
+    //target_brightness = (WHITE_BRIGHTNESS + BLACK_BRIGHTNESS) / 2;←これでもよくね？
+
+    /* 目標輝度値とカラーセンサ値の差分を計算 */
+    int16_t diff =color.get_rgb_diff();
+
+    /* ステアリング操舵量を計算 */
+
+  return (KP * diff + bias);//return p_steering_amount;
+}
