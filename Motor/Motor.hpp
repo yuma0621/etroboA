@@ -5,7 +5,7 @@ public:
   Motor(); //コンストラクタ
 
   void terminate();
-  motor_control();
+  void motor_control();
 
  /* モーターポートの定義 */
 static const motor_port_t
@@ -20,7 +20,5 @@ private:
 #else
   const int8_t pwm = 60;
 #endif
- calc();
- int16_t P_steering_amount_calc();
 
 };
