@@ -5,7 +5,7 @@ public:
   Motor(); //コンストラクタ
 
   void terminate();
-  void motor_control();
+  void motor_control(int left_motor_power, int right_motor_power);
 
  /* モーターポートの定義 */
 static const motor_port_t
