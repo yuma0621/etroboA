@@ -1,3 +1,4 @@
+#include "app.h"
 #include "Tracer.hpp"
 #include "ev3.h"
 
@@ -6,23 +7,6 @@ using namespace ev3api;
 Tracer::Tracer()
 {
  mode = Straight;
-}
-
-void Tracer::tracer_task(intptr_t exinf) { 
-
- switch(mode){
-        case Straight:
-            int16_t rotation = P_steering_amount_calc();/* ステアリング操舵量補正値の計算 *
-   motor_control(rotation);
-            break;
-        case Curve:
-
-            break;
-        default:
-            break;
-    }
- //set_parameters(40, 0.83, 0);//mode, base_speed, Kp, bias
- ext_tsk();
 }
 
 void Tracer::init() {
@@ -53,4 +37,21 @@ int16_t Tracer::P_steering_amount_calc() {
     int16_t diff =color.get_rgb_diff();
 
   return (Kp * diff + bias);
+}
+
+void tracer_task(intptr_t exinf) { 
+
+ switch(mode){
+        case Straight:
+            int16_t rotation = P_steering_amount_calc();/* ステアリング操舵量補正値の計算 *
+   motor_control(rotation);
+            break;
+        case Curve:
+
+            break;
+        default:
+            break;
+    }
+ //set_parameters(40, 0.83, 0);//mode, base_speed, Kp, bias
+ ext_tsk();
 }
