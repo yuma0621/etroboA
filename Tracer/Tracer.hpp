@@ -22,7 +22,6 @@ class Tracer {
 public:
   Tracer(); //コンストラクタ
 
-  extern void tracer_task(intptr_t exinf);
   void init();
   void terminate();
   set_parameters(int base_speed, double Kp, int bias);, base_speed, Kp, biasを変更する関数(未実装)
@@ -41,7 +40,7 @@ private:
 #else
   const int8_t pwm = 60;
 #endif
- calc();
+
  int16_t P_steering_amount_calc();
 
 };
