@@ -1,12 +1,14 @@
-#include "app.hpp"
+#include "app.h"
 #include <stdio.h>
 #include "Tracer.hpp"
 #include "Color.hpp"
+#include "Motor.hpp"
 
 using namespace ev3api;
 
 Tracer tracer;
 Color color;
+Motor motor;
 
 void main_task(intptr_t unused) { // <1>
 
