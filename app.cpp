@@ -12,16 +12,16 @@ Motor motor;
 
 void main_task(intptr_t unused) { // <1>
 
- main_init();  　　　/*初期設定*/
- wait_start();                   /* 動作開始待ち(シミュレータ:自動で開始, 実機:BlueToothボタンで開始) */
- calibration();    /* キャリブレーション */
-    p_tracer();     /*P制御ライントレース*/
+ main_init();     /*初期設定*/
+ wait_start();                   /* 動作開始待ち(シミュレータ:自動で開始, 実機:BlueToothボタンで開始) */
+ calibration();    /* キャリブレーション */
+    p_tracer();     /*P制御ライントレース*/
 
-                                   　　/* デブリリムーバル */
-                                   　　/* スマートキャリー */
-                                   　　/* 停車処理 */
+                                     /* デブリリムーバル */
+                                     /* スマートキャリー */
+                                     /* 停車処理 */
 
- ext_tsk();     　 /* メインタスク終了 */
+ ext_tsk();       /* メインタスク終了 */
 }
 
 void main_init(){
@@ -91,18 +91,20 @@ void calibration(){
 
 void p_tracer(){
 
- /*P制御ライントレースタスク*/
-  const uint32_t duration = 100*1000; // <2>
+ /*P制御ライントレースタスク*/
+  const uint32_t duration = 100*1000; // <2>
      //tracer.init();
-     sta_cyc(TRACER_CYC); // <4>
+     sta_cyc(TRACER_CYC);
+  sta_cyc(ODOMETRY_CYC);
 
-   while (!ev3_button_is_pressed(LEFT_BUTTON)) { // <1>
+   while (!ev3_button_is_pressed(LEFT_BUTTON)) { // <1>
       clock.sleep(duration);
-   }
+   }
 
-   stp_cyc(TRACER_CYC);
-   tracer.terminate();
-   ext_tsk();
+   stp_cyc(TRACER_CYC);
+   stp_cyc(ODOMETRY_CYC);
+   tracer.terminate();
+   ext_tsk();
 }
 
 /* タスク停止関数(ミリ秒) */
