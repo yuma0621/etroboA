@@ -7,6 +7,7 @@ extern "C" {
 #define MAIN_PRIORITY    (TMIN_APP_TPRI + 1)
 #define TRACER_PRIORITY  (TMIN_APP_TPRI + 2)
 #define CALIBRATION_PRIORITY  (TMIN_APP_TPRI + 2) /* キャリブレーションタスク */
+#define ODOMETRY_PRIORITY  (TMIN_APP_TPRI + 2)
 
 /* タスク周期の定義 */
 #define TRACER_PERIOD  (100 * 1000 / 0.6 ) /* ライントレースタスク:100msec周期 */
@@ -27,8 +28,8 @@ static const sensor_port_t
 
 extern void main_task(intptr_t exinf); /*メインタスク*/
 extern void tracer_task(intptr_t exinf);/* トレーサータスク*/
-extern void calibration_task(intptr_t unused);/* キャリブレーション */
-
+extern void calibration_task(intptr_t unused);/* キャリブレーションタスク */
+extern void odometry_task(intptr_t exinf); /*オドメトリタスク*/
 
 #endif /* TOPPERS_MACRO_ONLY */
 
