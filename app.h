@@ -12,6 +12,7 @@ extern "C" {
 /* タスク周期の定義 */
 #define TRACER_PERIOD  (100 * 1000 / 0.6 ) /* ライントレースタスク:100msec周期 */
 #define CALIBRATION_PERIOD  (100 * 1000 / 0.6) /* キャリブレーションタスク:100msec周期 */
+#define ODOMETRY_PERIOD  (100 * 1000 / 0.6 )
 
 /* センサーポートの定義 */
 static const sensor_port_t
