@@ -1,16 +1,16 @@
 #include "ev3.h"
 
-using namespace ev3api;
+//using namespace ev3api;
 
 class Color {
 public:
   Color(); //コンストラクタ
   static int16_t get_rgb_diff();
-  //void init();←コンストラクタで十分か？
+  //void init();←コンストラクタで十分か?
   //void terminate();
 
- /* RGB値 */
- extern rgb_raw_t rgb_max;
- extern rgb_raw_t rgb_min;
- extern rgb_raw_t rgb_ave;
-}
+/* RGB値 */
+rgb_raw_t rgb_max;
+rgb_raw_t rgb_min;
+rgb_raw_t rgb_ave;
+};
