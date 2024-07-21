@@ -23,8 +23,8 @@ APPL_DIRS += $(mkfile_path)Calibration
 APPL_DIRS += $(mkfile_path)Motor
 
 INCLUDES += \
- -I$(mkfile_path)Tracer\
- -I$(mkfile_path)Calibration\
-　-l$(mkfile_path)Motor\
+ -I$(mkfile_path)Tracer\
+ -I$(mkfile_path)Calibration\
+ -I$(mkfile_path)Motor\
 
 #COPTS += -fno-use-cxa-atexit
