@@ -1,7 +1,7 @@
-#include "ColorSensr.h"
+#include "Color.h"
 #include <stdio.h>
 
-Color::Color(){
+color_init(){
     rgb_max.r = 0;
     rgb_min.r = 200;
     rgb_max.g = 0;
@@ -11,7 +11,7 @@ Color::Color(){
 }
 
 /* 反射光とキャリブレーション値との差を取得*/
-int16_t Color::get_rgb_diff(){
+int16_t color_get_rgb_diff(){
     rgb_raw_t rgb_raw;
     int16_t green_diff;
     ev3_color_sensor_get_rgb_raw(color_sensor, &rgb_raw);       /* カラーセンサ値の取得 */
