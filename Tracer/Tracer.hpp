@@ -1,5 +1,5 @@
 #include "Motor.hpp"
-#include "Color/Color.hpp"
+#include "Color.hpp"
 #include "ev3.h"
 
 /* ライントレースエッジ切り替え */
@@ -9,13 +9,13 @@
 /* 走行基準スピード */
 
 /* ステアリング操舵量の係数 */
-#define KP   　(0.83)
+#define KP          (0.83)
 #define KI         (0.83)
 #define KD         (0.83)
 
 enum Mode {
   Straight,
-  Curve
+  Curve,
   End
 };
 enum Mode mode;
@@ -26,13 +26,17 @@ public:
 
   void terminate();
   //void set_parameters(int base_speed, double Kp, int bias);base_speed, Kp, biasを変更する関数(未実装)
- float P_steering_amount_calc();
+  float P_steering_amount_calc();
   float PID_steering_amount_calc();
-  void trace_motor_control(int16_t rotation);
+  void trace_motor_control(float rotation);
+
+  float target_distance;
+  float target_direction;
 
 private:
- float cur_diff;
+  float cur_diff;
   float pre_diff;
+  float integral;
   int base_speed = 40;/* 走行基準スピード */
   double Kp = 0.83;
   int bias = 0;
