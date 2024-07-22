@@ -1,27 +1,27 @@
-#include "Motor.hpp"
+#include "Odometry.h"
 #include "ev3api.h"
 using namespace ev3api;
 
-Motor::Motor(){
+void odom_init(){
 /* モーター出力ポートの設定 */
     ev3_motor_config(arm_motor     ,LARGE_MOTOR);
     ev3_motor_config(left_motor    ,MEDIUM_MOTOR);
     ev3_motor_config(right_motor   ,MEDIUM_MOTOR);
 }
 
-void Motor::terminate(){
+void odom_terminate(){
    ev3_motor_set_power(left_motor, 0);
    ev3_motor_set_power(right_motor, 0);
 }
 
-void Motor::motor_control(int left_motor_power, int right_motor_power) {    
+void motor_control(int left_motor_power, int right_motor_power) {    
    ev3_motor_set_power(left_motor, left_motor_power);
    ev3_motor_set_power(right_motor, right_motor_power);
    return;
 }
 
 /* 初期化関数 */
-void Motor::Distance_reset(){
+void odom_Distance_reset(){
     //各変数の値の初期化
     distance = 0.0;
     distance4msR = 0.0;
@@ -32,7 +32,7 @@ void Motor::Distance_reset(){
 }
 
 /* 距離更新(4ms間の移動距離を毎回加算している) */
-void Motor::Distance_update(){
+void odom_Distance_update(){
     float cur_angleL = ev3_motor_get_counts(left_motor); //左モータ回転角度の現在値
     float cur_angleR = ev3_motor_get_counts(right_motor);//右モータ回転角度の現在値
     float distance4ms = 0.0;        //4msの距離
@@ -49,32 +49,32 @@ void Motor::Distance_update(){
 }
 
 /* 走行距離を取得 */
-float Motor::Distance_getDistance(){
+float odom_Distance_getDistance(){
     return distance;
 }
 
 /* 右タイヤの4ms間の距離を取得 */
-float Motor::Distance_getDistance4msRight(){
+float odom_Distance_getDistanceRight(){
     return distance4msR;
 }
 
 /* 左タイヤの4ms間の距離を取得 */
-float Motor::Distance_getDistance4msLeft(){
+float odom_Distance_getDistanceLeft(){
     return distance4msL;
 }
 
 /* 方位リセット */
-void Motor::Direction_reset(){
+void odom_Direction_reset(){
     direction = 0.0;
 }
 
  /* 方位を取得(右旋回が正転) */
-float Motor::Direction_getDirection(){
+float odom_Direction_getDirection(){
     return direction;
 }
 
 /* 方位を更新 */
-void Motor::Direction_update(){
+void odom_Direction_update(){
     //(360 / (2 * 円周率 * 車体トレッド幅)) * (右進行距離 - 左進行距離)
-    direction += (360.0 / (2.0 * PI * TREAD)) * (Distance_getDistance4msLeft() - Distance_getDistance4msRight());
+    direction += (360.0 / (2.0 * PI * TREAD)) * (odom_Distance_getDistanceLeft() - odom_Distance_getDistanceRight());
 }
