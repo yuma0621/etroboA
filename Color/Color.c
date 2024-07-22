@@ -1,5 +1,5 @@
 #include "Color.h"
-#include <stdio.h>
+//#include <stdio.h>
 
 color_init(){
     rgb_max.r = 0;
