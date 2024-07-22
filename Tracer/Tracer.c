@@ -11,13 +11,13 @@ trace_init()
 }
 
 void trace_terminate(){
-    motor.motor_control(0, 0);
+    motor_control(0, 0);
 }
 
 float trace_Psteering_calc() {
   float p;
 
-   cur_diff =color.get_rgb_diff();//目標輝度値とカラーセンサ値の差分を計算
+   cur_diff =color_get_rgb_diff();//目標輝度値とカラーセンサ値の差分を計算
    p = KP * cur_diff;
 
    return (p + bias);
@@ -27,7 +27,7 @@ float trace_PIDsteering_calc(){
  float p, i, d;
 
  pre_diff = cur_diff;
- cur_diff = color.get_rgb_diff();
+ cur_diff = color_get_rgb_diff();
  integral += (cur_diff + pre_diff) / 2.0 * TRACER_PERIOD;
 
  p = KP * cur_diff;
