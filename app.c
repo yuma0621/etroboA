@@ -1,8 +1,8 @@
 #include "app.h"
 #include <stdio.h>
-#include "Tracer.h"
-#include "Color.h"
-#include "Odometry.h"
+//#include "Tracer.h"
+//#include "Color.h"
+//#include "Odometry.h"
 
 using namespace ev3api;
 
@@ -85,6 +85,9 @@ void odometry_task(intptr_t exinf){
 }
 
 void main_init(){
+ color_init(); 
+ odom_init();
+ trace_init();
 /* グローバル変数の初期化 */
 
   /* センサー入力ポートの設定 */
