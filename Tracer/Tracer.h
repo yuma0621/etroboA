@@ -1,4 +1,6 @@
 #include "ev3.h"
+#include "Color.h"
+#include "Odometry.h"
 
 /* ライントレースエッジ切り替え */
 #define LEFT_EDGE         (-1)
