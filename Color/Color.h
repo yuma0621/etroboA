@@ -2,7 +2,7 @@
 
 using namespace ev3api;
 
-public:
+//public:
   color_init(); //コンストラクタ
   int16_t get_rgb_diff();
   //void init();←コンストラクタで十分か?
