@@ -1,8 +1,8 @@
 #include "app.h"
 #include <stdio.h>
-#include "Tracer.hpp"
-#include "Color.hpp"
-#include "Motor.hpp"
+#include "Tracer.h"
+#include "Color.h"
+#include "Odometry.h"
 
 using namespace ev3api;
 
