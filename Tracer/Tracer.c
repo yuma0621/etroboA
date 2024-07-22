@@ -17,7 +17,7 @@ void trace_terminate(){
 float trace_Psteering_calc() {
   float p;
 
-   cur_diff =color_get_rgb_diff();//目標輝度値とカラーセンサ値の差分を計算
+   cur_diff = color_get_rgb_diff();//目標輝度値とカラーセンサ値の差分を計算
    p = KP * cur_diff;
 
    return (p + bias);
@@ -44,7 +44,7 @@ void trace_motor_control(float rotation) {
     left_motor_power  = (int)(base_speed + (rotation * LEFT_EDGE));
     right_motor_power = (int)(base_speed - (rotation * LEFT_EDGE));
 
-  motor.motor_control(left_motor_power, right_motor_power);
+  motor_control(left_motor_power, right_motor_power);
 
   return;
 }
