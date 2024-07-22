@@ -20,7 +20,7 @@ enum Mode {
 };
 enum Mode mode;
 
-public:
+//public:
   void trace_init(); //コンストラクタ
 
   void trace_terminate();
@@ -32,7 +32,7 @@ public:
   float target_distance;
   float target_direction;
 
-private:
+//private:
   float cur_diff;
   float pre_diff;
   float integral;
