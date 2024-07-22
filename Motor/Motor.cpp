@@ -1,31 +1,27 @@
 #include "Motor.hpp"
-#include "ev3.h"
-
+#include "ev3api.h"
 using namespace ev3api;
 
 Motor::Motor(){
- /* モーター出力ポートの設定 */
+/* モーター出力ポートの設定 */
     ev3_motor_config(arm_motor     ,LARGE_MOTOR);
     ev3_motor_config(left_motor    ,MEDIUM_MOTOR);
     ev3_motor_config(right_motor   ,MEDIUM_MOTOR);
 }
 
-void Motor::terminate() {
-  msg_f("Stopped.", 1);
- ev3_motor_set_power(left_motor, 0);
-    ev3_motor_set_power(right_motor, 0);
+void Motor::terminate(){
+   ev3_motor_set_power(left_motor, 0);
+   ev3_motor_set_power(right_motor, 0);
 }
 
 void Motor::motor_control(int left_motor_power, int right_motor_power) {    
-
- ev3_motor_set_power(left_motor, left_motor_power);
-    ev3_motor_set_power(right_motor, right_motor_power);
-
- return;
+   ev3_motor_set_power(left_motor, left_motor_power);
+   ev3_motor_set_power(right_motor, right_motor_power);
+   return;
 }
 
 /* 初期化関数 */
-void Motor::Distance_reset() {
+void Motor::Distance_reset(){
     //各変数の値の初期化
     distance = 0.0;
     distance4msR = 0.0;
@@ -81,10 +77,4 @@ float Motor::Direction_getDirection(){
 void Motor::Direction_update(){
     //(360 / (2 * 円周率 * 車体トレッド幅)) * (右進行距離 - 左進行距離)
     direction += (360.0 / (2.0 * PI * TREAD)) * (Distance_getDistance4msLeft() - Distance_getDistance4msRight());
-}
-
-Motor motor;
-void odmetory_task(intptr_t exinf){
- motor.Distance_update();
- motor.Direction_update();
 }
