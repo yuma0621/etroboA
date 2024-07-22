@@ -5,20 +5,19 @@ using namespace ev3api;
 #define TREAD 50
 #define TIRE_DIAMETER 0.81
 
-class appMotor{
 public:
-  Motor(); //コンストラクタ
+  void odom_init(); //コンストラクタ
 
-  void terminate();
+  void odom_terminate();
   void motor_control(int left_motor_power, int right_motor_power);
-  void Distance_reset();
-  void Distance_update();
-  float Distance_getDistance();
-  float Distance_getDistance4msRight();
-  float Distance_getDistance4msLeft();
-  void Direction_reset();
-  float Direction_getDirection();
-  void Direction_update();
+  void odom_Distance_reset();
+  void odom_Distance_update();
+  float odom_Distance_getDistance();
+  float odom_Distance_getDistance4msRight();
+  float odom_Distance_getDistance4msLeft();
+  void odom_Direction_reset();
+  float odom_Direction_getDirection();
+  void odom_Direction_update();
 
 
 /* モーターポートの定義 */
@@ -44,4 +43,4 @@ private:
   const int8_t pwm = 60;
 #endif
 */
-};
+
