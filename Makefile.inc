@@ -4,8 +4,8 @@ APPL_COBJS +=
 
 APPL_CXXOBJS +=\
 Tracer.o\
-Calibration.o\
-Motor.o\
+Color.o\
+Odometry.o\
 
 SRCLANG := c++
 
@@ -19,12 +19,12 @@ endif
 APPL_LIBS += -lm
 
 APPL_DIRS += $(mkfile_path)Tracer
-APPL_DIRS += $(mkfile_path)Calibration
-APPL_DIRS += $(mkfile_path)Motor
+APPL_DIRS += $(mkfile_path)Color
+APPL_DIRS += $(mkfile_path)Odometry
 
 INCLUDES += \
  -I$(mkfile_path)Tracer\
- -I$(mkfile_path)Calibration\
- -I$(mkfile_path)Motor\
+ -I$(mkfile_path)Color\
+ -I$(mkfile_path)Odometry\
 
 #COPTS += -fno-use-cxa-atexit
