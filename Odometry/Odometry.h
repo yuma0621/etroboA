@@ -5,7 +5,7 @@ using namespace ev3api;
 #define TREAD 50
 #define TIRE_DIAMETER 0.81
 
-public:
+//public:
   void odom_init(); //コンストラクタ
 
   void odom_terminate();
@@ -34,7 +34,7 @@ static const motor_port_t
    static float distance;
    static float direction; //現在の方位
 
-private:
+//private:
   const int8_t mThreshold = 20;
 /*
 #ifndef MAKE_RASPIKE
