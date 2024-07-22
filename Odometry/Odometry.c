@@ -24,8 +24,8 @@ void motor_control(int left_motor_power, int right_motor_power) {
 void odom_Distance_reset(){
     //各変数の値の初期化
     distance = 0.0;
-    distance4msR = 0.0;
-    distance4msL = 0.0;
+    distanceR = 0.0;
+    distanceL = 0.0;
     //モータ角度の過去値に現在値を代入
     pre_angleL = ev3_motor_get_counts(left_motor);
     pre_angleR = ev3_motor_get_counts(right_motor);
@@ -35,13 +35,13 @@ void odom_Distance_reset(){
 void odom_Distance_update(){
     float cur_angleL = ev3_motor_get_counts(left_motor); //左モータ回転角度の現在値
     float cur_angleR = ev3_motor_get_counts(right_motor);//右モータ回転角度の現在値
-    float distance4ms = 0.0;        //4msの距離
+    float distance = 0.0;        //
 
     // 4ms間の走行距離 = ((円周率 * タイヤの直径) / 360) * (モータ角度過去値 - モータ角度現在値)
-    distance4msL = ((PI * TIRE_DIAMETER) / 360.0) * (cur_angleL - pre_angleL);  // 4ms間の左モータ距離
-    distance4msR = ((PI * TIRE_DIAMETER) / 360.0) * (cur_angleR - pre_angleR);  // 4ms間の右モータ距離
-    distance4ms = (distance4msL + distance4msR) / 2.0; //左右タイヤの走行距離を足して割る
-    distance += distance4ms;
+    distanceL = ((PI * TIRE_DIAMETER) / 360.0) * (cur_angleL - pre_angleL);  // 左モータ距離
+    distanceR = ((PI * TIRE_DIAMETER) / 360.0) * (cur_angleR - pre_angleR);  // 右モータ距離
+    distance = (distanceL + distanceR) / 2.0; //左右タイヤの走行距離を足して割る
+    distance += distance;
 
     //モータの回転角度の過去値を更新
     pre_angleL = cur_angleL;
@@ -55,12 +55,12 @@ float odom_Distance_getDistance(){
 
 /* 右タイヤの4ms間の距離を取得 */
 float odom_Distance_getDistanceRight(){
-    return distance4msR;
+    return distanceR;
 }
 
 /* 左タイヤの4ms間の距離を取得 */
 float odom_Distance_getDistanceLeft(){
-    return distance4msL;
+    return distanceL;
 }
 
 /* 方位リセット */
