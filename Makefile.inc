@@ -1,11 +1,11 @@
 mkfile_path := $(dir $(lastword $(MAKEFILE_LIST)))
 
 APPL_COBJS +=
-
-APPL_CXXOBJS +=\
 Tracer.o\
 Color.o\
 Odometry.o\
+
+APPL_CXXOBJS +=\
 
 SRCLANG := c++
 
