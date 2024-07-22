@@ -1,5 +1,3 @@
-#include "Motor.hpp"
-#include "Color.hpp"
 #include "ev3.h"
 
 /* ライントレースエッジ切り替え */
@@ -20,14 +18,13 @@ enum Mode {
 };
 enum Mode mode;
 
-class Tracer {
 public:
-  Tracer(); //コンストラクタ
+  void trace_init(); //コンストラクタ
 
-  void terminate();
+  void trace_terminate();
   //void set_parameters(int base_speed, double Kp, int bias);base_speed, Kp, biasを変更する関数(未実装)
-  float P_steering_amount_calc();
-  float PID_steering_amount_calc();
+  float trace_Psteering_calc();
+  float trace_PIDsteering_calc();
   void trace_motor_control(float rotation);
 
   float target_distance;
@@ -40,8 +37,7 @@ private:
   int base_speed = 40;/* 走行基準スピード */
   double Kp = 0.83;
   int bias = 0;
-  Motor motor;
-  Color color;
+
   const int8_t mThreshold = 20;
 /*
 #ifndef MAKE_RASPIKE
