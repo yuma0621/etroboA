@@ -27,11 +27,11 @@ static const motor_port_t
     right_motor     = EV3_PORT_B;
 
    static float distance;
-   static float distance4msR;
-   static float distance4msL;
+   static float distanceR;
+   static float distanceL;
    static float pre_angleL;
    static float pre_angleR;
-   static float distance4ms;
+   static float distance;
    static float direction; //現在の方位
 
 private:
