@@ -1,8 +1,8 @@
-#include "Tracer.hpp"
+#include "Tracer.h"
 
 //using namespace ev3api;
 
-Tracer::Tracer()
+trace_init()
 {
   mode = Straight;
   target_distance = 4000;//mm
@@ -10,11 +10,11 @@ Tracer::Tracer()
 
 }
 
-void Tracer::terminate(){
+void trace_terminate(){
     motor.motor_control(0, 0);
 }
 
-float Tracer::P_steering_amount_calc() {
+float trace_Psteering_calc() {
   float p;
 
    cur_diff =color.get_rgb_diff();//目標輝度値とカラーセンサ値の差分を計算
@@ -23,7 +23,7 @@ float Tracer::P_steering_amount_calc() {
    return (p + bias);
 }
 
-float Tracer::PID_steering_amount_calc(){
+float trace_PIDsteering_calc(){
  float p, i, d;
 
  pre_diff = cur_diff;
@@ -37,7 +37,7 @@ float Tracer::PID_steering_amount_calc(){
  return (p + i + d);
 }
 
-void Tracer::trace_motor_control(float rotation) {
+void trace_motor_control(float rotation) {
 
   int left_motor_power, right_motor_power; /*左右モータ設定パワー*/
 
