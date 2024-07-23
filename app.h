@@ -10,11 +10,13 @@ extern "C" {
 #define TRACER_PRIORITY  (TMIN_APP_TPRI + 2)
 #define CALIBRATION_PRIORITY  (TMIN_APP_TPRI + 2) /* キャリブレーションタスク */
 #define ODOMETRY_PRIORITY  (TMIN_APP_TPRI + 2)
+//#define LOG_PRIORITY  (TMIN_APP_TPRI + 2)
 
 /* タスク周期の定義 */
 #define TRACER_PERIOD  (100 * 1000 / 0.6 ) /* ライントレースタスク:100msec周期 */
 #define CALIBRATION_PERIOD  (100 * 1000 / 0.6) /* キャリブレーションタスク:100msec周期 */
 #define ODOMETRY_PERIOD  (100 * 1000 / 0.6 )
+//#define LOG_PERIOD  (100 * 1000 / 0.6 )
 
 //extern enum Mode trace_mode;
 /* センサーポートの定義 */
@@ -34,6 +36,7 @@ extern void main_task(intptr_t exinf); /*メインタスク*/
 extern void tracer_task(intptr_t exinf);/* トレーサータスク*/
 extern void calibration_task(intptr_t unused);/* キャリブレーションタスク */
 extern void odometry_task(intptr_t exinf); /*オドメトリタスク*/
+//extern void log_task(intptr_t exinf);
 
 #endif /* TOPPERS_MACRO_ONLY */
 
