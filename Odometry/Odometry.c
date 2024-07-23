@@ -1,9 +1,12 @@
 #include "Odometry.h"
 #include "ev3api.h"
-using namespace ev3api;
+//using namespace ev3api;
 
 void odom_init(){
 /* モーター出力ポートの設定 */
+    arm_motor       = EV3_PORT_A;
+    left_motor      = EV3_PORT_C;
+    right_motor     = EV3_PORT_B;
     ev3_motor_config(arm_motor     ,LARGE_MOTOR);
     ev3_motor_config(left_motor    ,MEDIUM_MOTOR);
     ev3_motor_config(right_motor   ,MEDIUM_MOTOR);
