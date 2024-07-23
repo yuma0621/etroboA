@@ -3,8 +3,6 @@
 #include "Color.h"
 #include "Odometry.h"
 #include "Tracer.h"
-//#include "Color.h"
-//#include "Odometry.h"
 
 //using namespace ev3api;
 /*
@@ -13,7 +11,7 @@ Color color;
 Motor motor;
 */
 void main_task(intptr_t unused) { // <1>
-
+ //sta_cyc(LOG_CYC);
  main_init();     /*初期設定*/
  wait_start();    /* 動作開始待ち(シミュレータ:自動で開始, 実機:BlueToothボタンで開始) */
  calibration();    /* キャリブレーション */
@@ -22,7 +20,7 @@ void main_task(intptr_t unused) { // <1>
                                      /* デブリリムーバル */
                                      /* スマートキャリー */
                                      /* 停車処理 */
-
+ //stp_cyc(LOG_CYC);
  ext_tsk();       /* メインタスク終了 */
 }
 
