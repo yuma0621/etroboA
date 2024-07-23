@@ -2,9 +2,11 @@
 
 //using namespace ev3api;
 
-trace_init()
+void trace_init()
 {
-  mode = Straight;
+  //mode = Straight;
+  base_speed = 40;/* 走行基準スピード */
+  bias = 0;
   target_distance = 4000;//mm
   target_direction =90;//deg
 
@@ -28,11 +30,11 @@ float trace_PIDsteering_calc(){
 
  pre_diff = cur_diff;
  cur_diff = color_get_rgb_diff();
- integral += (cur_diff + pre_diff) / 2.0 * TRACER_PERIOD;
+ integral += (cur_diff + pre_diff) / 2.0 * 0.1;//TRACER_PERIOD;
 
  p = KP * cur_diff;
  i = KI * integral;
- d = KD * (cur_diff - pre_diff)/TRACER_PERIOD;
+ d = KD * (cur_diff - pre_diff)/0.1; //0.1s=100ms=TRACER_PERIOD;
 
  return (p + i + d);
 }
@@ -44,7 +46,7 @@ void trace_motor_control(float rotation) {
     left_motor_power  = (int)(base_speed + (rotation * LEFT_EDGE));
     right_motor_power = (int)(base_speed - (rotation * LEFT_EDGE));
 
-  motor_control(left_motor_power, right_motor_power);
+   motor_control(left_motor_power, right_motor_power);
 
   return;
 }
