@@ -4,8 +4,8 @@
 //using namespace ev3api;
 /* 円周率 */
 #define PI 3.14159265358
-#define TREAD 50
-#define TIRE_DIAMETER 0.81
+#define TREAD 0.127
+#define TIRE_DIAMETER 0.1
 
 //public:
   void odom_init(); //コンストラクタ
