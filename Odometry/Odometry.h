@@ -1,5 +1,7 @@
-#include "ev3.h"
-using namespace ev3api;
+#pragma once
+
+#include "ev3api.h"
+//using namespace ev3api;
 /* 円周率 */
 #define PI 3.14159265358
 #define TREAD 50
@@ -13,29 +15,29 @@ using namespace ev3api;
   void odom_Distance_reset();
   void odom_Distance_update();
   float odom_Distance_getDistance();
-  float odom_Distance_getDistance4msRight();
-  float odom_Distance_getDistance4msLeft();
+  float odom_Distance_getDistanceRight();
+  float odom_Distance_getDistanceLeft();
   void odom_Direction_reset();
   float odom_Direction_getDirection();
   void odom_Direction_update();
 
 
 /* モーターポートの定義 */
-static const motor_port_t
-    arm_motor       = EV3_PORT_A,
-    left_motor      = EV3_PORT_C,
-    right_motor     = EV3_PORT_B;
+motor_port_t
+    arm_motor,
+    left_motor,
+    right_motor;
 
-   static float distance;
-   static float distanceR;
-   static float distanceL;
-   static float pre_angleL;
-   static float pre_angleR;
-   static float distance;
-   static float direction; //現在の方位
+   float distance;
+   float distanceR;
+   float distanceL;
+   float pre_angleL;
+   float pre_angleR;
+   float distance;
+   float direction; //現在の方位
 
 //private:
-  const int8_t mThreshold = 20;
+
 /*
 #ifndef MAKE_RASPIKE
   const int8_t pwm = (Motor::PWM_MAX) / 6;
