@@ -1,15 +1,17 @@
 #include "app.h"
 #include <stdio.h>
-//#include "Tracer.h"
+#include "Color.h"
+#include "Odometry.h"
+#include "Tracer.h"
 //#include "Color.h"
 //#include "Odometry.h"
 
-using namespace ev3api;
-
+//using namespace ev3api;
+/*
 Tracer tracer;
 Color color;
 Motor motor;
-
+*/
 void main_task(intptr_t unused) { // <1>
 
  main_init();     /*初期設定*/
@@ -54,21 +56,27 @@ void calibration_task(intptr_t unused){
     printf("[Calibration Task] max:%5d, min:%5d, ave:%5d\n", rgb_max.g, rgb_min.g, rgb_ave.g);
     ext_tsk();/* タスク終了 */
 }
+enum Mode {
+  Straight,
+  Curve,
+  End
+};
+ enum Mode trace_mode=Straight;
 
 void tracer_task(intptr_t exinf){
  float rotation;
-   switch(mode){
+   switch(trace_mode){
           case Straight://0
               rotation = trace_Psteering_calc(); //P制御ステアリング操舵量補正値の計算 
               if(odom_Distance_getDistance()<target_distance){
-                  mode = Curve;
+                  trace_mode = Curve;
               }
               break;
 
           case Curve://1
               rotation = trace_PIDsteering_calc(); //PID制御ステアリング操舵量補正値の計算
               if(odom_Direction_getDirection()<target_direction){
-                 mode = Straight;
+                 trace_mode = Straight;
               }
               break;
 
@@ -167,6 +175,11 @@ void p_tracer(){
    stp_cyc(ODOMETRY_CYC);
    trace_terminate();
    ext_tsk();
+}
+
+/* タスク停止関数(ミリ秒) */
+void wait_msec(int32_t msec){
+    dly_tsk(msec * 1000 / 0.6);
 }
 
 /* タスク停止関数(ミリ秒) */
