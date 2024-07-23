@@ -1,7 +1,8 @@
 #include "Color.h"
 //#include <stdio.h>
 
-color_init(){
+void color_init(){
+    color_sensor = EV3_PORT_2;
     rgb_max.r = 0;
     rgb_min.r = 200;
     rgb_max.g = 0;
@@ -18,3 +19,4 @@ int16_t color_get_rgb_diff(){
     green_diff = rgb_ave.g - rgb_raw.g;                     /* キャリブレーション値との差分を計算(green) */
     return green_diff;
 }
+
