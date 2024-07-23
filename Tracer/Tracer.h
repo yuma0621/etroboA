@@ -1,3 +1,5 @@
+#pragma once
+
 #include "ev3.h"
 #include "Color.h"
 #include "Odometry.h"
@@ -13,13 +15,8 @@
 #define KI         (0.83)
 #define KD         (0.83)
 
-enum Mode {
-  Straight,
-  Curve,
-  End
-};
-enum Mode mode;
 
+extern void motor_control(int left_motor_power, int right_motor_power);
 //public:
   void trace_init(); //コンストラクタ
 
@@ -33,14 +30,13 @@ enum Mode mode;
   float target_direction;
 
 //private:
-  float cur_diff;
-  float pre_diff;
+  int16_t cur_diff;
+  int16_t pre_diff;
   float integral;
-  int base_speed = 40;/* 走行基準スピード */
-  double Kp = 0.83;
-  int bias = 0;
+  int base_speed;/* 走行基準スピード */
+  int bias;
 
-  const int8_t mThreshold = 20;
+  //const int8_t mThreshold = 20;
 /*
 #ifndef MAKE_RASPIKE
   const int8_t pwm = (Motor::PWM_MAX) / 6;
@@ -48,4 +44,3 @@ enum Mode mode;
   const int8_t pwm = 60;
 #endif
 */
-};
