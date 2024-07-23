@@ -11,9 +11,9 @@
 /* 走行基準スピード */
 
 /* ステアリング操舵量の係数 */
-#define KP          (0.83)
-#define KI         (0.83)
-#define KD         (0.83)
+#define KP          (0.5)
+#define KI         (0)
+#define KD         (0.01)
 
 
 extern void motor_control(int left_motor_power, int right_motor_power);
