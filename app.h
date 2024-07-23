@@ -1,9 +1,10 @@
+/* C++用
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+*/
 #include "ev3api.h"
-#include "Tracer.h"
+//#include "Tracer.h"
 
 #define MAIN_PRIORITY    (TMIN_APP_TPRI + 1)
 #define TRACER_PRIORITY  (TMIN_APP_TPRI + 2)
@@ -15,10 +16,11 @@ extern "C" {
 #define CALIBRATION_PERIOD  (100 * 1000 / 0.6) /* キャリブレーションタスク:100msec周期 */
 #define ODOMETRY_PERIOD  (100 * 1000 / 0.6 )
 
+//extern enum Mode trace_mode;
 /* センサーポートの定義 */
 static const sensor_port_t
     touch_sensor    = EV3_PORT_1,
-    color_sensor    = EV3_PORT_2,
+    //color_sensor    = EV3_PORT_2,
     sonar_sensor    = EV3_PORT_3,
     gyro_sensor     = EV3_PORT_4;
 
@@ -40,7 +42,8 @@ void wait_start();/* 動作開始待ち */
 void calibration();/* キャリブレーション */
 void p_tracer();/*P制御ライントレース*/
 void wait_msec(int32_t msec);/* タスク停止関数(ミリ秒) */
-
+/* C++用
 #ifdef __cplusplus
 }
 #endif
+*/
