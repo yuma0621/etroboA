@@ -89,7 +89,56 @@ void odometry_task(intptr_t exinf){
     odom_Distance_update();
     odom_Direction_update();
 }
+/*log******************************************/
+void log_task(intptr_t exinf) {
+  //static bool inited=false;
+  //if (!inited){
+    startup();//ログファイルオープン
+    sprintf(logstr,"cyctimes,");    //loghead
+    log_tsk();
+    sprintf(logstr,"x,y,th,walktype,");    //loghead
+    log_tsk();
+    sprintf(logstr,"PWM_L,PWM_R,");    //loghead
+    log_tsk();
+    sprintf(logstr,"R,G,B,bright,ColorName,");    //loghead
+    log_tsk();
+    sprintf(logstr,"Distance_flg,Distance,\n");    //loghead
+    log_tsk();
 
+    sprintf(logstr,"battery=");    //loghead
+    log_tsk();
+    int battery = ev3_battery_voltage_mV();// バッテリー値
+    sprintf(logstr,"%d,\n",battery);
+    log_tsk();
+
+
+    inited=true;
+  }
+  if (endtrg){
+    finish();//ログファイルクローズ
+  }
+
+  log_cyc_times++;
+  sCoordinate coo         = walker.getCoordinate();
+  enum eWalktype walktype = walker.getWalktype();
+  sPWMs pwm               = walker.getPWM();
+  sColor color_now        = colormonit.getColor();
+  sDistance distance_now = distancemonit.getDistance();
+
+  sprintf(logstr,"%d,",log_cyc_times);
+  log_tsk();
+  sprintf(logstr,"%f,%f,%f,%d,",coo.x,coo.y,MathFnc::rad2deg(coo.th),walktype);
+  log_tsk();
+  sprintf(logstr,"%f,%f,",pwm.pwmL,pwm.pwmR);
+  log_tsk();
+  sprintf(logstr,"%d,%d,%d,%f,%d,",color_now.R,color_now.G,color_now.B,color_now.bright,color_now.name);
+  log_tsk();
+  sprintf(logstr,"%d,%d",distance_now.listen_flg,distance_now.Distance);
+  log_tsk();
+  sprintf(logstr,"\n");
+  log_tsk();
+  ext_tsk();
+}
 void main_init(){
  color_init(); 
  odom_init();
