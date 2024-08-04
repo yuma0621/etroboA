@@ -44,13 +44,13 @@ void odom_Distance_reset(){
 void odom_Distance_update(){
     float cur_angleL = ev3_motor_get_counts(left_motor); //左モータ回転角度の現在値
     float cur_angleR = ev3_motor_get_counts(right_motor);//右モータ回転角度の現在値
-    float distance = 0.0;        //
+    float distance_dt = 0.0;        //
 
     // 4ms間の走行距離 = ((円周率 * タイヤの直径) / 360) * (モータ角度過去値 - モータ角度現在値)
     distanceL = ((PI * TIRE_DIAMETER) / 360.0) * (cur_angleL - pre_angleL);  // 左モータ距離
     distanceR = ((PI * TIRE_DIAMETER) / 360.0) * (cur_angleR - pre_angleR);  // 右モータ距離
-    distance = (distanceL + distanceR) / 2.0; //左右タイヤの走行距離を足して割る
-    distance += distance;
+    distance_dt = (distanceL + distanceR) / 2.0; //左右タイヤの走行距離を足して割る
+    distance += distance_dt;
 
     //モータの回転角度の過去値を更新
     pre_angleL = cur_angleL;
