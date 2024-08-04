@@ -14,13 +14,13 @@ extern "C" {
 
   void odom_terminate();
   void motor_control(int left_motor_power, int right_motor_power);
-  extern void odom_Distance_reset();
-  extern void odom_Distance_update();
-  extern float odom_Distance_getDistance();
-  extern float odom_Distance_getDistanceRight();
-  extern float odom_Distance_getDistanceLeft();
-  extern void odom_Direction_reset();
-  extern float odom_Direction_getDirection();
+  static void odom_Distance_reset();
+  static void odom_Distance_update();
+  static float odom_Distance_getDistance();
+  static float odom_Distance_getDistanceRight();
+  static float odom_Distance_getDistanceLeft();
+  static void odom_Direction_reset();
+  static float odom_Direction_getDirection();
   void odom_Direction_update();
 
 
@@ -31,13 +31,13 @@ extern "C" {
     right_motor;
 */
 
-   extern float distance;
-   extern float distanceR;
-   extern float distanceL;
-   extern float pre_angleL;
-   extern float pre_angleR;
-   extern float distance;
-   extern float direction; //現在の方位
+   static float distance;
+   static float distanceR;
+   static float distanceL;
+   static float pre_angleL;
+   static float pre_angleR;
+   static float distance;
+   static float direction; //現在の方位
 
 //private:
 
