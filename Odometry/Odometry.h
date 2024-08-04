@@ -14,14 +14,14 @@ extern "C" {
 
   void odom_terminate();
   void motor_control(int left_motor_power, int right_motor_power);
-  static void odom_Distance_reset();
+  void odom_Distance_reset();
   static void odom_Distance_update();
-  static float odom_Distance_getDistance();
+  float odom_Distance_getDistance();
   static float odom_Distance_getDistanceRight();
   static float odom_Distance_getDistanceLeft();
-  static void odom_Direction_reset();
-  static float odom_Direction_getDirection();
-  void odom_Direction_update();
+  void odom_Direction_reset();
+  float odom_Direction_getDirection();
+  static void odom_Direction_update();
 
 
 /* モーターポートの定義 */
