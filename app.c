@@ -1,3 +1,5 @@
+#pragma once
+
 #include <stdio.h>
 #include "app.h"
 #include "Odometry.h"
