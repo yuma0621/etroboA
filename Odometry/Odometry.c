@@ -1,9 +1,14 @@
+#include "app.h"
 #include "Odometry.h"
 #include "ev3api.h"
 //using namespace ev3api;
 
+void odometry_task(intptr_t exinf){
+    odom_Distance_update();
+    odom_Direction_update();
+}
+/*
 void odom_init(){
-/* モーター出力ポートの設定 */
     arm_motor       = EV3_PORT_A;
     left_motor      = EV3_PORT_C;
     right_motor     = EV3_PORT_B;
@@ -11,7 +16,7 @@ void odom_init(){
     ev3_motor_config(left_motor    ,MEDIUM_MOTOR);
     ev3_motor_config(right_motor   ,MEDIUM_MOTOR);
 }
-
+*/
 void odom_terminate(){
    ev3_motor_set_power(left_motor, 0);
    ev3_motor_set_power(right_motor, 0);
