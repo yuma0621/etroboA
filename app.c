@@ -1,22 +1,13 @@
 #include <stdio.h>
 #include "app.h"
-#include "Calibration.h"
 
 /* グローバル変数 */
-int16_t s_min;          /* 彩度Sの平均値（目標値） */
-int16_t s_max;          /* 彩度Sの平均値（目標値） */
-int16_t s_ave;          /* 彩度Sの平均値（目標値） */
-int16_t v_min;          /* 明度Vの平均値（目標値） */
-int16_t v_max;          /* 明度Vの平均値（目標値） */
-int16_t v_ave;          /* 明度Vの平均値（目標値） */
 
 /* メインタスク(起動時にのみ関数コールされる) */
 void main_task(intptr_t unused){
     init_global();                  /* グローバル変数の初期化 */
     port_config();                  /* ポート初期設定 */
     wait_start();                   /* 動作開始待ち（シミュレータ：自動またはスペースキーで開始, 実機：BlueToothボタンで開始） */
-    s_calibration();                /* S値キャリブレーション（青線） */
-    v_calibration();                /* V値キャリブレーション（黒線） */
     laptime_tracer();               /* ラップタイム走行 */
                                     /* タブルループNEO */
                                     /* スマートデブリ */
