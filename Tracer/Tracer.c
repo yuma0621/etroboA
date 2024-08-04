@@ -1,3 +1,4 @@
+#pragma once
 #include "app.h"
 #include "Odometry.h"
 #include "Tracer.h"
