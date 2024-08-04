@@ -38,15 +38,14 @@ static const motor_port_t
 /* タスク優先度 */
 #define MAIN_PRIORITY    (TMIN_APP_TPRI + 1)
 #define ODOMETRY_PRIORITY  (TMIN_APP_TPRI + 2)
+#define TRACER_PRIORITY  (TMIN_APP_TPRI + 2)
 
 /* タスク周期 */
 #ifdef ETROBOC_SIM  /* シミュレータ */
-    #define LINE_TRACER_PERIOD  (10 * 1000 / 0.6 )
+    #define TRACER_PERIOD  (10 * 1000 / 0.6 )
     #define ODOMETRY_PERIOD  (10 * 1000 / 0.6 )
 #else   /* RasPike実機 */
-    #define LINE_TRACER_PERIOD  (10 * 1000 )
-    #define V_CALIB_PERIOD  (10 * 1000 )
-    #define S_CALIB_PERIOD  (10 * 1000 )
+    #define TRACER_PERIOD  (10 * 1000 )
     #define ODOMETRY_PERIOD  (10 * 1000 )
 #endif
 
