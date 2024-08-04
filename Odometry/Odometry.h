@@ -29,13 +29,13 @@
     right_motor;
 */
 
-   float distance;
-   float distanceR;
-   float distanceL;
-   float pre_angleL;
-   float pre_angleR;
-   float distance;
-   float direction; //現在の方位
+   extern float distance;
+   extern float distanceR;
+   extern float distanceL;
+   extern float pre_angleL;
+   extern float pre_angleR;
+   extern float distance;
+   extern float direction; //現在の方位
 
 //private:
 
