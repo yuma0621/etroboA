@@ -57,7 +57,7 @@ static void laptime_tracer(){
     /* 計測器初期化 */
     Distance_reset();
     Direction_reset();
-    sta_cyc(LINE_TRACER_TASK_CYC);  /* ライントレースタスクの起動 */
+    sta_cyc(TRACER_TASK_CYC);  /* トレースタスクの起動 */
     sta_cyc(ODOMETRY_TASK_CYC);  /*オドメトリタスクの起動 */
 }
 
