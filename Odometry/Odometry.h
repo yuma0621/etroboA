@@ -23,10 +23,11 @@
 
 
 /* モーターポートの定義 */
-motor_port_t
+/*motor_port_t
     arm_motor,
     left_motor,
     right_motor;
+*/
 
    float distance;
    float distanceR;
