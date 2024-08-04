@@ -6,6 +6,7 @@
 void odometry_task(intptr_t exinf){
     odom_Distance_update();
     odom_Direction_update();
+    printf("distance = %3d, diraction= %3d\n" distance, diraction);
 }
 /*
 void odom_init(){
