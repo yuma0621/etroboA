@@ -14,8 +14,8 @@ void tracer_task(intptr_t unused) {
     //static RUN_STATE state = TURN;
 
     /* 計測器初期化 */
-    //Distance_reset();
-    //Direction_reset();
+    //odom_Distance_reset();
+    //odom_Direction_reset();
 
     switch(state) {
         case AHEAD:
@@ -23,14 +23,14 @@ void tracer_task(intptr_t unused) {
             ev3_motor_set_power(left_motor, 30);
             ev3_motor_set_power(right_motor, 30);
             //400mm以上前進したら，次状態遷移
-            if(Distance_getDistance() > 400.0) {
+            if(odom_Distance_getDistance() > 400.0) {
                 state = END;
             }
             break;
         case TURN:
             ev3_motor_set_power(left_motor, 30);
             ev3_motor_set_power(right_motor, -30);
-            if( Direction_getDirection() > 90.0) {;
+            if(odom_Direction_getDirection() > 90.0) {;
                 state = END;
             }
             break;
