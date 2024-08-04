@@ -5,7 +5,7 @@
 
 /* メインタスク(起動時にのみ関数コールされる) */
 void main_task(intptr_t unused){
-    init_global();                  /* グローバル変数の初期化 */
+    //init_global();                  /* グローバル変数の初期化 */
     port_config();                  /* ポート初期設定 */
     wait_start();                   /* 動作開始待ち（シミュレータ：自動またはスペースキーで開始, 実機：BlueToothボタンで開始） */
     laptime_tracer();               /* ラップタイム走行 */
@@ -17,14 +17,14 @@ void main_task(intptr_t unused){
 }
 
 /* グローバル変数の初期化 */
-static void init_global(){
+/*static void init_global(){
     s_min = 255;
     s_max = 0;
     s_ave = 90;
     v_min = 255;
     v_max = 0;
     v_ave = 50;
-}
+}*/
 
 /* ポート初期設定 */
 static void port_config(){
