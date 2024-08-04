@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "app.h"
+#include "Odometry.h"
 
 /* グローバル変数 */
 
@@ -55,8 +56,8 @@ void wait_start(){
 /* ラップタイム走行 */
 static void laptime_tracer(){
     /* 計測器初期化 */
-    Distance_reset();
-    Direction_reset();
+    odom_Distance_reset();
+    odom_Direction_reset();
     sta_cyc(TRACER_TASK_CYC);  /* トレースタスクの起動 */
     sta_cyc(ODOMETRY_TASK_CYC);  /*オドメトリタスクの起動 */
 }
