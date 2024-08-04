@@ -1,4 +1,6 @@
-#pragma once
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 #include "ev3api.h"
 //using namespace ev3api;
@@ -47,3 +49,6 @@
 #endif
 */
 
+#ifdef __cplusplus
+}
+#endif
