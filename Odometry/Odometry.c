@@ -6,7 +6,7 @@
 void odometry_task(intptr_t exinf){
     odom_Distance_update();
     odom_Direction_update();
-    printf("distance = %lf, direction= %lf\n", distance, direction, );
+    printf("distance = %lf, direction= %lf\n", distance, direction);
 }
 /*
 void odom_init(){
