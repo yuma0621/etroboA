@@ -21,8 +21,8 @@ void tracer_task(intptr_t unused) {
     switch(state) {
         case AHEAD:
             //左右車輪駆動
-            ev3_motor_set_power(left_motor, 60);
-            ev3_motor_set_power(right_motor, 60);
+            ev3_motor_set_power(left_motor, 70);
+            ev3_motor_set_power(right_motor, 70);
             //1000mm以上前進したら，次状態遷移
             if(odom_Distance_getDistance() > 1000.0) {
                 state = END;
