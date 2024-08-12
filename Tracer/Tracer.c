@@ -29,7 +29,6 @@ typedef enum {
     MOVE, // 目標座標に到達するまで前進
     END   // 構造体に格納されている座標を移動しきったら停止
 } RUN_STATE;
-
 static RUN_STATE state = TURN;
 
 //目標座標情報の構造体
@@ -37,6 +36,10 @@ struct GRID_XY {
     int gridX;
     int gridY;
 };
+ struct GRID_XY target_grid[GRID_NUM] = {{2,5},
+                                            {3,3},
+                                            {4,2},
+                                            {5,5} };
 
 static float grid_distance = 0.0; //現在座標から目標座標までの距離
 static float grid_direction = 0.0;//現在座標から目標座標の方位
