@@ -134,8 +134,3 @@ void Grid_setDirection(int aX, int aY, int bX, int bY) {
 float Grid_getDirection() {
     return grid_direction;
 }
-
-/* 方位を設定 */
-void Direction_setDirection(float set_dir){
-    direction = set_dir;
-}
