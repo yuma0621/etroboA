@@ -24,8 +24,6 @@ void Grid_setDirection(int aX, int aY, int bX, int bY);
 /* 目標座標の方位を取得する関数 */
 float Grid_getDirection();
 
-#endif
-
 #ifdef __cplusplus
 }
 #endif
