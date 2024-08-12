@@ -90,6 +90,6 @@ void odom_Direction_update(){
 }
 
 /* 方位を設定 */
-void Direction_setDirection(float set_dir){
+void odom_Direction_setDirection(float set_dir){
     direction = set_dir;
 }
