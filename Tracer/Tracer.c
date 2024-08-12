@@ -71,7 +71,7 @@ void tracer_task(intptr_t unused) {
                 cur_gridY = target_grid[grid_count].gridY;
                 // 計測器情報のリセット
                 odom_Distance_reset();
-                Direction_setDirection(target_dir);
+                odom_Direction_setDirection(target_dir);
                 // 次の座標までの方位,距離を格納する
                 grid_count++;
                 Grid_setDistance(cur_gridX, cur_gridY, target_grid[grid_count].gridX, target_grid[grid_count].gridY);
