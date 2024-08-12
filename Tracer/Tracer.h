@@ -4,10 +4,6 @@ extern "C" {
 
 #include "math.h"
 
- struct GRID_XY target_grid[GRID_NUM] = {{2,5},
-                                            {3,3},
-                                            {4,2},
-                                            {5,5} };
     int cur_gridX = 0; // 現在位置座標のX値
     int cur_gridY = 0; // 現在位置座標のY値
     float target_dir = 0.0; // 現在位置座標から目標座標までの距離
