@@ -30,6 +30,8 @@ typedef enum {
     END   // 構造体に格納されている座標を移動しきったら停止
 } RUN_STATE;
 
+static RUN_STATE state = TURN;
+
 //目標座標情報の構造体
 struct GRID_XY {
     int gridX;
