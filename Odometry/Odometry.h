@@ -23,6 +23,8 @@ extern "C" {
   float odom_Direction_getDirection();
   static void odom_Direction_update();
 
+  void odom_Direction_setDirection(float set_dir);
+
 
 /* モーターポートの定義 */
 /*motor_port_t
