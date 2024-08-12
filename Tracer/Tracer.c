@@ -99,8 +99,8 @@ void tracer_task(intptr_t unused) {
         default:
             break;
         }
-    }
 }
+
 
 /* 初期化関数 */
 void Grid_init() {
