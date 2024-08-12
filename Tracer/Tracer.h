@@ -3,7 +3,7 @@ extern "C" {
 #endif
 
 #include "math.h"
-static RUN_STATE state = TURN;
+
  struct GRID_XY target_grid[GRID_NUM] = {{2,5},
                                             {3,3},
                                             {4,2},
