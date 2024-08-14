@@ -46,8 +46,8 @@ static const motor_port_t
     #define TRACER_PERIOD  (10 * 1000 / 0.6 )
     #define ODOMETRY_PERIOD  (10 * 1000 / 0.6 )
 #else   /* RasPike実機 */
-    #define TRACER_PERIOD  (10 * 1000 )
-    #define ODOMETRY_PERIOD  (10 * 1000 )
+    #define TRACER_PERIOD  (1 * 1000 )
+    #define ODOMETRY_PERIOD  (1 * 1000 )
 #endif
 
 /* 関数のプロトタイプ宣言 */
