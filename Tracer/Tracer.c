@@ -36,10 +36,10 @@ struct GRID_XY {
     int gridX;
     int gridY;
 };
- struct GRID_XY target_grid[GRID_NUM] = {{2,5},
-                                            {3,3},
-                                            {4,2},
-                                            {5,5} };
+ struct GRID_XY target_grid[GRID_NUM] = {{0,1},
+                                            {1,1},
+                                            {1,2},
+                                            {0,2} };
 
 static float grid_distance = 0.0; //現在座標から目標座標までの距離
 static float grid_direction = 0.0;//現在座標から目標座標の方位
