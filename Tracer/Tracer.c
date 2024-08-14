@@ -53,6 +53,7 @@ void tracer_task(intptr_t unused) {
         switch(state) {
         case TURN:
             // 指定方位まで旋回する
+            printf("state = TURN");
             if(cur_dir < target_dir) {
                 ev3_motor_set_power(left_motor, 58);
                 ev3_motor_set_power(right_motor, -34);
@@ -66,6 +67,7 @@ void tracer_task(intptr_t unused) {
             }
             break;
         case MOVE:
+            printf("state = MOVE");
             ev3_motor_set_power(left_motor, 53);
             ev3_motor_set_power(right_motor, 45);
 
@@ -75,10 +77,10 @@ void tracer_task(intptr_t unused) {
                 cur_gridX = target_grid[grid_count].gridX;
                 cur_gridY = target_grid[grid_count].gridY;
                 // 計測器情報のリセット
-                odom_Distance_reset();
-                odom_Direction_setDirection(target_dir);
                 ev3_motor_reset_counts(left_motor);
                 ev3_motor_reset_counts(right_motor);
+                odom_Distance_reset();
+                odom_Direction_setDirection(target_dir);
                 // 次の座標までの方位,距離を格納する
                 grid_count++;
                 Grid_setDistance(cur_gridX, cur_gridY, target_grid[grid_count].gridX, target_grid[grid_count].gridY);
@@ -94,6 +96,7 @@ void tracer_task(intptr_t unused) {
                 }
             break;
         case END:
+            printf("state = END");
             // モータを停止
             ev3_motor_stop(left_motor, true);
             ev3_motor_stop(right_motor, true);
