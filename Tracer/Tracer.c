@@ -53,7 +53,6 @@ void tracer_task(intptr_t unused) {
         switch(state) {
         case TURN:
             // 指定方位まで旋回する
-            printf("state = TURN");
             if(cur_dir < target_dir) {
                 ev3_motor_set_power(left_motor, 58);
                 ev3_motor_set_power(right_motor, -34);
@@ -64,10 +63,10 @@ void tracer_task(intptr_t unused) {
             // 指定方位の一定範囲内に収まったら,移動開始
             if( (cur_dir > (target_dir-1.0)) && (cur_dir < (target_dir+1.0)) ) {;
                 state = MOVE;
+                printf("state = MOVE");
             }
             break;
         case MOVE:
-            printf("state = MOVE");
             ev3_motor_set_power(left_motor, 53);
             ev3_motor_set_power(right_motor, 45);
 
@@ -90,13 +89,14 @@ void tracer_task(intptr_t unused) {
 
                 // 再度,次座標への旋回を開始
                 state = TURN;
+                printf("state = TURN");
             } else
                 if( (cur_dis > target_dis) && (grid_count >= (GRID_NUM-1)) ) {
                     state = END;
+                    printf("state = END");
                 }
             break;
         case END:
-            printf("state = END");
             // モータを停止
             ev3_motor_stop(left_motor, true);
             ev3_motor_stop(right_motor, true);
