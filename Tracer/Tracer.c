@@ -19,7 +19,7 @@
 
 // 構造体に格納されている目標座標の数
 #define GRID_NUM 4
-#define GRID_SIZE 100.0 //座標のマス幅（100mm）
+#define GRID_SIZE 352.0 //座標のマス幅（352mm）
 
 /**
  * Global variables
