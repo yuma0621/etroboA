@@ -36,8 +36,8 @@ extern "C" {
    static float distance;
    static float distanceR;
    static float distanceL;
-   static float cur_angleL;
-   static float cur_angleR;
+   //static float cur_angleL;
+   //static float cur_angleR;
    static float pre_angleL;
    static float pre_angleR;
    static float direction; //現在の方位
