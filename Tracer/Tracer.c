@@ -94,6 +94,8 @@ void tracer_task(intptr_t unused) {
 
                 // 再度,次座標への旋回を開始
                 state = TURN;
+                sta_cyc(ODOMETRY_TASK_CYC);
+                wait_msec(50);
                 printf("state = TURN\n");
             } else
                 if( (cur_dis > target_dis) && (grid_count >= (GRID_NUM-1)) ) {
