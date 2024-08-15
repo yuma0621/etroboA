@@ -41,6 +41,7 @@ void odom_Distance_reset(){
     cur_angleL = 0.0;
     ev3_motor_reset_counts(left_motor);
     ev3_motor_reset_counts(right_motor);
+    wait_msec(100);
     /*
     //モータ角度の過去値に現在値を代入
     //pre_angleL = ev3_motor_get_counts(left_motor);
