@@ -75,9 +75,16 @@ void tracer_task(intptr_t unused) {
                 // 現在位置座標を更新
                 cur_gridX = target_grid[grid_count].gridX;
                 cur_gridY = target_grid[grid_count].gridY;
-                // 計測器情報のリセット
+                /* 計測器情報のリセット */
+                //motorをストップ
+                ev3_motor_stop(left_motor, true);
+                ev3_motor_stop(right_motor, true);
+                //一旦オドメトリタスクをストップ&待ち
+                stp_cyc(ODOMETRY_TASK_CYC);
+                wait_msec(50);
+                // 距離値&方向のリセット
                 odom_Distance_reset();
-                odom_Direction_setDirection(target_dir);
+                odom_Direction_setDirection(target_dir);//←これいる？
                 // 次の座標までの方位,距離を格納する
                 grid_count++;
                 Grid_setDistance(cur_gridX, cur_gridY, target_grid[grid_count].gridX, target_grid[grid_count].gridY);
