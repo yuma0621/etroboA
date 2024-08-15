@@ -39,8 +39,8 @@ void odom_Distance_reset(){
     distanceL = 0.0;
     cur_angleR = 0.0;
     cur_angleL = 0.0;
-    cur_angleR = 0.0;
-    cur_angleL = 0.0;
+    pre_angleR = 0.0;
+    pre_angleL = 0.0;
     wait_msec(100);
     /*
     //モータ角度の過去値に現在値を代入
