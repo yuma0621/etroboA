@@ -76,8 +76,6 @@ void tracer_task(intptr_t unused) {
                 cur_gridX = target_grid[grid_count].gridX;
                 cur_gridY = target_grid[grid_count].gridY;
                 // 計測器情報のリセット
-                ev3_motor_reset_counts(left_motor);
-                ev3_motor_reset_counts(right_motor);
                 odom_Distance_reset();
                 odom_Direction_setDirection(target_dir);
                 // 次の座標までの方位,距離を格納する
