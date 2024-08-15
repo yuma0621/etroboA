@@ -63,7 +63,7 @@ void tracer_task(intptr_t unused) {
             // 指定方位の一定範囲内に収まったら,移動開始
             if( (cur_dir > (target_dir-1.0)) && (cur_dir < (target_dir+1.0)) ) {;
                 state = MOVE;
-                printf("state = MOVE");
+                printf("state = MOVE\n");
             }
             break;
         case MOVE:
@@ -87,11 +87,11 @@ void tracer_task(intptr_t unused) {
 
                 // 再度,次座標への旋回を開始
                 state = TURN;
-                printf("state = TURN");
+                printf("state = TURN\n");
             } else
                 if( (cur_dis > target_dis) && (grid_count >= (GRID_NUM-1)) ) {
                     state = END;
-                    printf("state = END");
+                    printf("state = END\n");
                 }
             break;
         case END:
