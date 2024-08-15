@@ -32,6 +32,8 @@ void motor_control(int left_motor_power, int right_motor_power) {
 /* 初期化関数 */
 void odom_Distance_reset(){
     //各変数の値の初期化
+    ev3_motor_reset_counts(left_motor);
+    ev3_motor_reset_counts(right_motor);
     distance = 0.0;
     distanceR = 0.0;
     distanceL = 0.0;
@@ -39,8 +41,6 @@ void odom_Distance_reset(){
     cur_angleL = 0.0;
     cur_angleR = 0.0;
     cur_angleL = 0.0;
-    ev3_motor_reset_counts(left_motor);
-    ev3_motor_reset_counts(right_motor);
     wait_msec(100);
     /*
     //モータ角度の過去値に現在値を代入
