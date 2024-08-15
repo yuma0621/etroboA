@@ -6,7 +6,7 @@
 void odometry_task(intptr_t exinf){
     odom_Distance_update();
     odom_Direction_update();
-    printf("distance = %lf, direction= %lf", distance, direction);
+    printf(", distance = %lf, direction= %lf\n", distance, direction);
 }
 /*
 void odom_init(){
@@ -53,7 +53,7 @@ void odom_Distance_reset(){
 void odom_Distance_update(){
     float cur_angleL = ev3_motor_get_counts(left_motor); //左モータ回転角度の現在値
     float cur_angleR = ev3_motor_get_counts(right_motor);//右モータ回転角度の現在値
-    printf(", cur_angleL = %lf, cur_angleR = %lf, pre_angleL = %lf, pre_angleR = %lf\n", cur_angleL, cur_angleR, pre_angleL, pre_angleR);
+    printf("cur_angleL = %lf, cur_angleR = %lf, pre_angleL = %lf, pre_angleR = %lf", cur_angleL, cur_angleR, pre_angleL, pre_angleR);
     float distance_dt = 0.0;        //
 
     // 4ms間の走行距離 = ((円周率 * タイヤの直径) / 360) * (モータ角度過去値 - モータ角度現在値)
