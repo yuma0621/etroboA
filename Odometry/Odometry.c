@@ -35,9 +35,17 @@ void odom_Distance_reset(){
     distance = 0.0;
     distanceR = 0.0;
     distanceL = 0.0;
+    cur_angleR = 0.0;
+    cur_angleL = 0.0;
+    cur_angleR = 0.0;
+    cur_angleL = 0.0;
+    ev3_motor_reset_counts(left_motor);
+    ev3_motor_reset_counts(right_motor);
+    /*
     //モータ角度の過去値に現在値を代入
-    pre_angleL = ev3_motor_get_counts(left_motor);
-    pre_angleR = ev3_motor_get_counts(right_motor);
+    //pre_angleL = ev3_motor_get_counts(left_motor);
+    //pre_angleR = ev3_motor_get_counts(right_motor);
+    */
 }
 
 /* 距離更新(4ms間の移動距離を毎回加算している) */
@@ -76,6 +84,12 @@ float odom_Distance_getDistanceLeft(){
 /* 方位リセット */
 void odom_Direction_reset(){
     direction = 0.0;
+    cur_angleR = 0.0;
+    cur_angleL = 0.0;
+    cur_angleR = 0.0;
+    cur_angleL = 0.0;
+    ev3_motor_reset_counts(left_motor);
+    ev3_motor_reset_counts(right_motor);
 }
 
  /* 方位を取得(右旋回が正転) */
