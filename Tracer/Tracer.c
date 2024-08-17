@@ -10,6 +10,8 @@ typedef enum {
     END
 } RUN_STATE;
 
+int bias;
+
 void tracer_task(intptr_t unused) {
     //static RUN_STATE state = AHEAD;
     static RUN_STATE state = TURN;
