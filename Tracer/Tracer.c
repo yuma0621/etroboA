@@ -54,11 +54,11 @@ void tracer_task(intptr_t unused) {
         case TURN:
             // 指定方位まで旋回する
             if(cur_dir < target_dir) {
-                ev3_motor_set_power(left_motor, 80);
-                ev3_motor_set_power(right_motor, -80);
+                ev3_motor_set_power(left_motor, 50);
+                ev3_motor_set_power(right_motor, -50);
             } else {
-                ev3_motor_set_power(left_motor, -80);
-                ev3_motor_set_power(right_motor, 80);
+                ev3_motor_set_power(left_motor, -50);
+                ev3_motor_set_power(right_motor, 50);
             }
             // 指定方位の一定範囲内に収まったら,移動開始
             if( (cur_dir > (target_dir-1.0)) && (cur_dir < (target_dir+1.0)) ) {;
@@ -67,8 +67,8 @@ void tracer_task(intptr_t unused) {
             }
             break;
         case MOVE:
-            ev3_motor_set_power(left_motor, 80);
-            ev3_motor_set_power(right_motor, 80);
+            ev3_motor_set_power(left_motor, 50);
+            ev3_motor_set_power(right_motor, 50);
 
             // 指定位置までたどり着いたら状態遷移
             if( (cur_dis > target_dis)  && (grid_count < (GRID_NUM-1)) ) {
