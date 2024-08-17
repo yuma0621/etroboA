@@ -11,7 +11,7 @@ typedef enum {
 } RUN_STATE;
 
 int bias;
-//extern angle_diff;
+extern angle_diff;
 
 void tracer_task(intptr_t unused) {
     //static RUN_STATE state = AHEAD;
