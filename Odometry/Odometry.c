@@ -44,6 +44,8 @@ void odom_Distance_reset(){
 void odom_Distance_update(){
     float cur_angleL = ev3_motor_get_counts(left_motor); //左モータ回転角度の現在値
     float cur_angleR = ev3_motor_get_counts(right_motor);//右モータ回転角度の現在値
+    float cur_angle_diff = cur_angleL - cur_angleR;
+    angle_diff = cur_angle_diff; 
     printf(", cur_angleL = %lf, cur_angleR = %lf\n", cur_angleL, cur_angleR);
     float distance_dt = 0.0;        //
 
