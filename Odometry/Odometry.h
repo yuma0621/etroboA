@@ -38,7 +38,7 @@ extern "C" {
    static float pre_angleR;
    static float distance;
    static float direction; //現在の方位
-   float angle_diff;
+   extern float angle_diff;
 
 //private:
 
