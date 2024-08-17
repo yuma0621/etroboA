@@ -19,10 +19,22 @@ void tracer_task(intptr_t unused) {
     //odom_Direction_reset();
 
     switch(state) {
+        if(0.5 < abs(angle_diff)){
+            bias = 0;
+        }
+        else{
+            if(angle_diff>=0){
+                bias = 5;
+            }
+            else{
+                bias = -5;
+            }
+        }
+        
         case AHEAD:
             //左右車輪駆動
-            ev3_motor_set_power(left_motor, 45);//53
-            ev3_motor_set_power(right_motor, 45);
+            ev3_motor_set_power(left_motor, 45 + bias);//53
+            ev3_motor_set_power(right_motor, 45 - bias);
             //1000mm以上前進したら，次状態遷移
             if(odom_Distance_getDistance() > 1000.0) {
                 state = END;
