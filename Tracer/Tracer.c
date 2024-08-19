@@ -20,9 +20,7 @@ void tracer_task(intptr_t unused) {
     /* 計測器初期化 */
     //odom_Distance_reset();
     //odom_Direction_reset();
-
-    switch(state) {
-        if(5 > abs(angle_diff)){
+    if(5 > abs(angle_diff)){
             bias = 0;
         }
         else{
@@ -33,7 +31,8 @@ void tracer_task(intptr_t unused) {
                 bias = 5;
             }
         }
-        
+    
+    switch(state) {        
         case AHEAD:
             //左右車輪駆動
             ev3_motor_set_power(left_motor, 45 + bias);//53
