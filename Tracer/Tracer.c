@@ -27,10 +27,10 @@ void tracer_task(intptr_t unused) {
         }
         else{
             if(angle_diff>=0){
-                bias = 5;
+                bias = -5;
             }
             else{
-                bias = -5;
+                bias = 5;
             }
         }
         
