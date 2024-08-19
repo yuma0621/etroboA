@@ -22,7 +22,7 @@ void tracer_task(intptr_t unused) {
     //odom_Direction_reset();
 
     switch(state) {
-        if(0.5 < abs(angle_diff)){
+        if(5 > abs(angle_diff)){
             bias = 0;
         }
         else{
