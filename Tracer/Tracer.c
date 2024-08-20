@@ -43,7 +43,7 @@ void tracer_task(intptr_t unused) {
             }
             break;
         case TURN:
-            ev3_motor_set_power(left_motor, 65);//64,61,58,55
+            ev3_motor_set_power(left_motor, 69);//64,61,58,55
             ev3_motor_set_power(right_motor, -55);//40,37,34,31
             if(odom_Direction_getDirection() > 90.0) {;
                 state = END;
