@@ -3,6 +3,8 @@
 #include "ev3api.h"
 //using namespace ev3api;
 
+float angle_diff;
+
 void odometry_task(intptr_t exinf){
     odom_Distance_update();
     odom_Direction_update();
@@ -48,6 +50,8 @@ void odom_Distance_reset(){
 void odom_Distance_update(){
     float cur_angleL = ev3_motor_get_counts(left_motor); //左モータ回転角度の現在値
     float cur_angleR = ev3_motor_get_counts(right_motor);//右モータ回転角度の現在値
+    float cur_angle_diff = cur_angleL - cur_angleR; //Lが強いと正、Rが強いと負
+    angle_diff = cur_angle_diff; 
     printf("cur_angleL = %lf, cur_angleR = %lf, pre_angleL = %lf, pre_angleR = %lf", cur_angleL, cur_angleR, pre_angleL, pre_angleR);
     float distance_dt = 0.0;        //
 
