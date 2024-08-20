@@ -14,8 +14,8 @@ int bias;
 extern float angle_diff;
 
 void tracer_task(intptr_t unused) {
-    static RUN_STATE state = AHEAD;
-    //static RUN_STATE state = TURN;
+    //static RUN_STATE state = AHEAD;
+    static RUN_STATE state = TURN;
 
     /* 計測器初期化 */
     //odom_Distance_reset();
