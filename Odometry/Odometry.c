@@ -6,6 +6,7 @@
 //using namespace ev3api;
 
 float angle_diff;
+float direction;
 
 void odometry_task(intptr_t exinf){
     odom_Distance_update();
