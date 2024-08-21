@@ -146,8 +146,12 @@ void tracer_task(intptr_t unused) {
 
 /* 初期化関数 */
 void Grid_init() {
-    grid_distance = 0.0;
-    grid_direction = 0.0;
+    //grid_distance = 0.0;
+    //grid_direction = 0.0;
+    Grid_setDistance(cur_gridX, cur_gridY, target_grid[grid_count].gridX, target_grid[grid_count].gridY);
+    Grid_setDirection(cur_gridX, cur_gridY, target_grid[grid_count].gridX, target_grid[grid_count].gridY);
+    target_dis = Grid_getDistance();
+    target_dir = Grid_getDirection();
 }
 
 /* 座標aから座標bまでの移動距離を設定する関数 */
