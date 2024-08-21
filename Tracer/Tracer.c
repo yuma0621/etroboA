@@ -77,7 +77,22 @@ void tracer_task(intptr_t unused) {
             }
             // 指定方位の一定範囲内に収まったら,移動開始
             if( (cur_dir > (target_dir-1.0)) && (cur_dir < (target_dir+1.0)) ) {;
+                //motorをストップ
+                ev3_motor_stop(left_motor, true);
+                ev3_motor_stop(right_motor, true);
+                //一旦オドメトリタスクをストップ&待ち
+                stp_cyc(ODOMETRY_TASK_CYC);
+                wait_msec(50);
+                //直進移行のためのエンコーダリセット
+                ev3_motor_reset_counts(left_motor);
+                ev3_motor_reset_counts(right_motor);
+                wait_msec(100);
+                //モータ角度の過去値に現在値を代入
+                pre_angleL = ev3_motor_get_counts(left_motor);
+                pre_angleR = ev3_motor_get_counts(right_motor);
                 state = MOVE;
+                sta_cyc(ODOMETRY_TASK_CYC);
+                wait_msec(50);                                                                
                 printf("state = MOVE\n");
             }
             break;
@@ -97,9 +112,9 @@ void tracer_task(intptr_t unused) {
                 //一旦オドメトリタスクをストップ&待ち
                 stp_cyc(ODOMETRY_TASK_CYC);
                 wait_msec(50);
-                // 距離値&方向のリセット
+                // 距離値リセット
                 odom_Distance_reset();
-                odom_Direction_setDirection(target_dir);//←これいる？
+                //odom_Direction_setDirection(target_dir);//←これいる？
                 // 次の座標までの方位,距離を格納する
                 grid_count++;
                 Grid_setDistance(cur_gridX, cur_gridY, target_grid[grid_count].gridX, target_grid[grid_count].gridY);
