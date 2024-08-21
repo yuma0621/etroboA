@@ -163,7 +163,7 @@ void Grid_setDistance(int aX, int aY, int bX, int bY) {
 
 /* 座標aから座標bまでの移動距離を取得する関数 */
 float Grid_getDistance() {
-    printf();
+    printf("%lf\n", grid_distance);
     return grid_distance;
 }
 
@@ -181,5 +181,6 @@ void Grid_setDirection(int aX, int aY, int bX, int bY) {
 
 /* 目標座標の方位を取得する関数 */
 float Grid_getDirection() {
+    printf("%lf\n", grid_direction);
     return grid_direction;
 }
