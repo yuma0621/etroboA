@@ -4,13 +4,13 @@ extern "C" {
 
 #include "math.h"
 
-    int cur_gridX = 0; // 現在位置座標のX値
-    int cur_gridY = 0; // 現在位置座標のY値
-    float target_dir = 0.0; // 現在位置座標から目標座標までの距離
-    float target_dis = 0.0; // 現在位置座標から目標座標までの方位
-    float cur_dir = 0.0; // 方位計の現在値
-    float cur_dis = 0.0; // 距離計の現在値
-    int grid_count = 0;  // 目標座標構造体への参照カウンタ
+static int cur_gridX = 0; // 現在位置座標のX値
+static int cur_gridY = 0; // 現在位置座標のY値
+static float target_dir = 0.0; // 現在位置座標から目標座標までの距離
+static float target_dis = 0.0; // 現在位置座標から目標座標までの方位
+static float cur_dir = 0.0; // 方位計の現在値
+static float cur_dis = 0.0; // 距離計の現在値
+static int grid_count = 0;  // 目標座標構造体への参照カウンタ
 
 /* 初期化関数 */
 void Grid_init();
