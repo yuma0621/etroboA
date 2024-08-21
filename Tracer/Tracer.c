@@ -1,3 +1,5 @@
+#pragma once
+
 #include "ev3api.h"
 #include "app.h"
 #include "Odometry.h"
