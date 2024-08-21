@@ -3,7 +3,7 @@
 #include "ev3api.h"
 #include "app.h"
 #include "Odometry.h"
-//#include "Tracer.h"
+#include "Tracer.h"
 
 #if defined(BUILD_MODULE)
 #include "module_cfg.h"
