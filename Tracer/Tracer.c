@@ -55,7 +55,8 @@ void tracer_task(intptr_t unused) {
         // 計測器の現在値を格納
         cur_dis = odom_Distance_getDistance();
         cur_dir = odom_Direction_getDirection();
-
+        float last_dir;
+    
         if(5 > abs(angle_diff)){
             bias = 0;
         }
@@ -86,7 +87,7 @@ void tracer_task(intptr_t unused) {
                 //一旦オドメトリタスクをストップ&待ち
                 stp_cyc(ODOMETRY_TASK_CYC);
                 wait_msec(50);
-                float last_dir = cur_dir;
+                last_dir = cur_dir;
                 printf("last_dir = cur_dir = %lf\n", cur_dir);
                 //直進移行のためのエンコーダリセット
                 ev3_motor_reset_counts(left_motor);
@@ -97,12 +98,14 @@ void tracer_task(intptr_t unused) {
                 pre_angleR = ev3_motor_get_counts(right_motor);
                 state = MOVE;
                 sta_cyc(ODOMETRY_TASK_CYC);
-                odom_Direction_setDirection(last_dir);//←これこのタイミングでいい？
+                //odom_Direction_setDirection(last_dir);//←これこのタイミングでいい？
+                direction = last_dir;
                 wait_msec(50);                                                                
                 printf("state = MOVE\n");
             }
             break;
         case MOVE:
+            odom_Direction_setDirection(last_dir);//←これこのタイミングでいい？
             ev3_motor_set_power(left_motor, 45 + bias);
             ev3_motor_set_power(right_motor, 45 - bias);
 
@@ -118,7 +121,7 @@ void tracer_task(intptr_t unused) {
                 //一旦オドメトリタスクをストップ&待ち
                 stp_cyc(ODOMETRY_TASK_CYC);
                 wait_msec(50);
-                float last_dir = cur_dir;
+                last_dir = cur_dir;
                 printf("last_dir = cur_dir = %lf\n", cur_dir);
                 // 距離値リセット
                 odom_Distance_reset();
@@ -132,7 +135,8 @@ void tracer_task(intptr_t unused) {
                 // 再度,次座標への旋回を開始
                 state = TURN;
                 sta_cyc(ODOMETRY_TASK_CYC);
-                odom_Direction_setDirection(last_dir);//←これこのタイミングでいい？
+                //odom_Direction_setDirection(last_dir);//←これこのタイミングでいい？
+                direction = last_dir;
                 wait_msec(50);
                 printf("state = TURN\n");
             } else
