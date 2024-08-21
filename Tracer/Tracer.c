@@ -48,6 +48,7 @@ static float grid_direction = 0.0;//現在座標から目標座標の方位
 
 int bias;
 extern float angle_diff;
+extern float direction; //現在の方位
 
 void tracer_task(intptr_t unused) {
 
