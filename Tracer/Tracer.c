@@ -116,7 +116,7 @@ void tracer_task(intptr_t unused) {
                 wait_msec(50);
                 // 距離値リセット
                 odom_Distance_reset();
-                //odom_Direction_setDirection(target_dir);//←これいる？
+                odom_Direction_setDirection(target_dir);//←これいる？
                 // 次の座標までの方位,距離を格納する
                 grid_count++;
                 Grid_setDistance(cur_gridX, cur_gridY, target_grid[grid_count].gridX, target_grid[grid_count].gridY);
@@ -163,6 +163,7 @@ void Grid_setDistance(int aX, int aY, int bX, int bY) {
 
 /* 座標aから座標bまでの移動距離を取得する関数 */
 float Grid_getDistance() {
+    printf();
     return grid_distance;
 }
 
