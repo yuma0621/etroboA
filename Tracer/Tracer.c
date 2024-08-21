@@ -92,6 +92,7 @@ void tracer_task(intptr_t unused) {
                 //モータ角度の過去値に現在値を代入
                 pre_angleL = ev3_motor_get_counts(left_motor);
                 pre_angleR = ev3_motor_get_counts(right_motor);
+                odom_Direction_setDirection(cur_dir);//←これこのタイミングでいい？
                 state = MOVE;
                 sta_cyc(ODOMETRY_TASK_CYC);
                 wait_msec(50);                                                                
@@ -116,7 +117,7 @@ void tracer_task(intptr_t unused) {
                 wait_msec(50);
                 // 距離値リセット
                 odom_Distance_reset();
-                odom_Direction_setDirection(target_dir);//←これいる？
+                odom_Direction_setDirection(cur_dir);//←これこのタイミングでいい？
                 // 次の座標までの方位,距離を格納する
                 grid_count++;
                 Grid_setDistance(cur_gridX, cur_gridY, target_grid[grid_count].gridX, target_grid[grid_count].gridY);
