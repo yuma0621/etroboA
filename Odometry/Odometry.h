@@ -40,7 +40,7 @@ extern "C" {
    //static float cur_angleR;
    static float pre_angleL;
    static float pre_angleR;
-   static float direction; //現在の方位
+   float direction; //現在の方位
 
 //private:
 
