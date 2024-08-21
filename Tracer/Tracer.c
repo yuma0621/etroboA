@@ -44,7 +44,7 @@ struct GRID_XY {
                                             {0,2} };
 
 static float grid_distance = 0.0; //現在座標から目標座標までの距離
-static float grid_direction = 90.0;//現在座標から目標座標の方位
+static float grid_direction = 0.0;//現在座標から目標座標の方位
 
 int bias;
 extern float angle_diff;
