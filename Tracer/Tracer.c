@@ -86,6 +86,7 @@ void tracer_task(intptr_t unused) {
                 stp_cyc(ODOMETRY_TASK_CYC);
                 wait_msec(50);
                 float last_dir = cur_dir;
+                printf("last_dir = cur_dir = %lf\n", cur_dir);
                 //直進移行のためのエンコーダリセット
                 ev3_motor_reset_counts(left_motor);
                 ev3_motor_reset_counts(right_motor);
@@ -117,6 +118,7 @@ void tracer_task(intptr_t unused) {
                 stp_cyc(ODOMETRY_TASK_CYC);
                 wait_msec(50);
                 float last_dir = cur_dir;
+                printf("last_dir = cur_dir = %lf\n", cur_dir);
                 // 距離値リセット
                 odom_Distance_reset();
                 odom_Direction_setDirection(last_dir);//←これこのタイミングでいい？
