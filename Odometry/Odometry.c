@@ -102,7 +102,7 @@ float odom_Direction_getDirection(){
 /* 方位を更新 */
 void odom_Direction_update(){
     //(360 / (2 * 円周率 * 車体トレッド幅)) * (右進行距離 - 左進行距離)
-    direction += (360.0 / (2.0 * PI * TREAD)) * (odom_Distance_getDistanceLeft() - odom_Distance_getDistanceRight());
+    direction += (360.0 / (2.0 * PI * TREAD)) * (odom_Distance_getDistanceRight() - odom_Distance_getDistanceLeft());
 }
 
 /* 方位を設定 */
