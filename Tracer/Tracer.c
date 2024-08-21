@@ -105,7 +105,6 @@ void tracer_task(intptr_t unused) {
             }
             break;
         case MOVE:
-            odom_Direction_setDirection(last_dir);//←これこのタイミングでいい？
             ev3_motor_set_power(left_motor, 45 + bias);
             ev3_motor_set_power(right_motor, 45 - bias);
 
