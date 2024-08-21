@@ -107,4 +107,5 @@ void odom_Direction_update(){
 /* 方位を設定 */
 void odom_Direction_setDirection(float set_dir){
     direction = set_dir;
+    printf("direction = %lf\n", direction);
 }
